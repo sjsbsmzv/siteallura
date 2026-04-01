@@ -15,14 +15,14 @@
             theme: {
                 extend: {
                     colors: {
-                        "surface": "#EAE0DF", // Rosa nude mais suave, menos brilhante
-                        "primary-container": "#C49C35", // Dourado fechado
-                        "on-surface": "#2D2426",
+                        "surface": "#FCF7F7", // Rosa nude
+                        "primary-container": "#D4AF37", // Dourado
+                        "on-surface": "#1f1a1c",
                         "primary": "#b5952f",
                         "on-primary": "#ffffff",
-                        "on-surface-variant": "#594d45",
-                        "surface-container-low": "#E5D7D6",
-                        "surface-container-high": "#DFCDCB",
+                        "on-surface-variant": "#4d4635",
+                        "surface-container-low": "#FAEDEE",
+                        "surface-container-high": "#F5DFE1",
                         "outline-variant": "#d0c5af",
                         "on-primary-container": "#554300"
                     },
@@ -41,12 +41,31 @@
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
         .silk-gradient {
-            background: linear-gradient(135deg, rgba(234, 224, 223, 0.9) 0%, rgba(229, 215, 214, 0.85) 100%);
+            background: linear-gradient(135deg, rgba(252, 247, 247, 0.8) 0%, rgba(250, 237, 238, 0.8) 50%, rgba(245, 223, 225, 0.8) 100%);
             position: relative;
             overflow: hidden;
         }
+        .floating-gold {
+            filter: drop-shadow(0 20px 30px rgba(212, 175, 55, 0.25));
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
         .text-shimmer {
-            color: #C49C35;
+            background: linear-gradient(to right, #b5952f 10%, #E6C5A2 30%, #F5B0B8 50%, #D4AF37 70%, #E6C5A2 90%);
+            background-size: 200% auto;
+            color: #000;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 6s ease-in-out infinite alternate;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
         .content-layer {
@@ -59,7 +78,7 @@
 
 <!-- Persistent Background Texture -->
 <div class="fixed inset-0 z-[-1] pointer-events-none">
-    <img src="hero_texture.png" class="w-full h-full object-cover opacity-[0.07] mix-blend-multiply" alt="liquid gold texture background" />
+    <img src="hero_texture.png" class="w-full h-full object-cover opacity-20 mix-blend-multiply" alt="liquid gold texture background" />
 </div>
 
 <!-- Top Navigation Bar -->
@@ -69,10 +88,10 @@
             <img src="LOGO.png" alt="Afra Beauty Logo" class="h-16 w-auto object-contain hover:opacity-80 transition-opacity duration-300 hover:scale-105" />
         </a>
         <div class="hidden md:flex space-x-12 font-headline font-light tracking-wide">
-            <a class="text-primary-container border-b border-primary-container/30 pb-1 hover:opacity-100 hover:text-primary transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Tudo até R$ 20</a>
-            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Skin Care</a>
-            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Mais Vendidos</a>
+            <a class="text-primary-container border-b border-primary-container/30 pb-1 hover:opacity-100 hover:text-primary transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Maquiagem</a>
+            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Skincare</a>
             <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Novidades</a>
+            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Ofertas</a>
         </div>
         <div class="flex items-center space-x-6 text-primary-container">
             <button class="hover:scale-110 transition-transform">
@@ -100,159 +119,144 @@
 
         <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center content-layer">
             <div class="md:w-1/2 mb-8 md:mb-0 mt-10 md:mt-20 text-center md:text-left">
-                <span class="font-label text-[10px] md:text-xs uppercase tracking-[0.3em] text-primary mb-3 md:mb-4 block font-semibold">Beleza para o dia a dia</span>
+                <span class="font-label text-[10px] md:text-xs uppercase tracking-[0.3em] text-primary mb-3 md:mb-4 block font-semibold">Inspirado em Afrodite</span>
                 <h1 class="font-headline text-[2.75rem] md:text-8xl lg:text-9xl leading-[0.9] tracking-tighter mb-5 md:mb-8 text-on-surface drop-shadow-sm">
-                    Fique linda <br/>
-                    <span class="italic font-light text-shimmer">Pagando pouco.</span>
+                    Beleza que <br/>
+                    <span class="italic font-light text-shimmer">Inspira.</span>
                 </h1>
                 <p class="font-body text-base md:text-xl text-on-surface-variant max-w-md mx-auto md:mx-0 mb-8 md:mb-12 leading-relaxed font-light">
-                    As últimas tendências em maquiagem e autocuidado com a praticidade que você ama. Descubra produtos de alta qualidade com preços incríveis que cabem no seu bolso.
+                    As últimas tendências em maquiagem e autocuidado com a praticidade que você ama. Descubra o luxo acessível para realçar seu poder todos os dias.
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                    <button onclick="mostrarView('produtos')" class="px-8 md:px-10 py-3.5 md:py-4 bg-primary-container text-white rounded-full font-label tracking-widest text-[10px] md:text-xs uppercase transition-all duration-500 hover:bg-primary w-full sm:w-auto font-bold">
-                        Ver Produtos
+                    <button onclick="mostrarView('produtos')" class="px-8 md:px-10 py-3.5 md:py-4 bg-gradient-to-r from-primary to-primary-container text-white rounded-full font-label tracking-widest text-[10px] md:text-xs uppercase transition-all duration-500 hover:shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:-translate-y-1 w-full sm:w-auto">
+                        Ver Lançamentos
                     </button>
-                    <button class="px-8 md:px-10 py-3.5 md:py-4 border-2 border-primary-container text-primary-container rounded-full font-label tracking-widest text-[10px] md:text-xs uppercase hover:bg-primary-container/10 transition-colors w-full sm:w-auto text-center font-bold">
-                        🔥 Ofertas até R$ 20
+                    <button onclick="mostrarView('produtos')" class="px-8 md:px-10 py-3.5 md:py-4 border border-primary-container/40 text-primary rounded-full font-label tracking-widest text-[10px] md:text-xs uppercase hover:bg-primary-container/10 transition-colors backdrop-blur-sm w-full sm:w-auto text-center">
+                        🔥 Ofertas Irresistíveis
                     </button>
                 </div>
             </div>
             <div class="md:w-1/2 relative min-h-[380px] md:min-h-[500px] w-full mt-8 md:mt-0 flex items-center justify-center z-10 lg:pl-10">
                 <!-- Glowing Orb Background -->
-                <!-- Soft Background Glow -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 md:w-80 h-60 md:h-80 bg-white/40 blur-[80px] rounded-full pointer-events-none"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 md:w-80 h-60 md:h-80 bg-primary-container/30 blur-[100px] rounded-full pointer-events-none"></div>
 
                 <!-- Main Portrait Layer -->
-                <div class="absolute right-[10%] md:right-[5%] lg:right-[15%] top-1/2 -translate-y-1/2 w-[200px] md:w-[280px] lg:w-[320px] aspect-[3/4] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-lg border-2 border-white/60 z-20 hover:-translate-y-1 transition-transform duration-500 ease-out group">
-                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop" alt="Maquiagem dia a dia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out">
+                <div class="absolute right-[10%] md:right-[5%] lg:right-[15%] top-1/2 -translate-y-1/2 w-[200px] md:w-[280px] lg:w-[320px] aspect-[3/4] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white/80 z-20 hover:-translate-y-2 transition-transform duration-700 ease-out group" style="box-shadow: 0 30px 60px rgba(212, 175, 55, 0.15);">
+                    <img src="hero_portrait.png" alt="Afra Beauty Editorial Cover" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out">
                 </div>
 
-                <!-- Badge Popular -->
-                <div class="absolute top-[10%] md:top-[15%] left-[0%] lg:left-[10%] px-4 md:px-5 py-2 md:py-3 bg-white/95 backdrop-blur-md rounded-full shadow-lg z-40 flex items-center gap-2 md:gap-3 border border-primary-container/20">
-                     <span class="material-symbols-outlined text-primary-container text-xl md:text-2xl" data-icon="local_fire_department">local_fire_department</span>
+                <!-- Floating Texture/Detail Component -->
+                <div class="absolute left-[2%] md:left-[-5%] lg:left-[5%] bottom-[8%] md:bottom-[10%] w-[140px] md:w-[200px] lg:w-[240px] aspect-square rounded-full overflow-hidden shadow-2xl border-4 border-white/60 backdrop-blur-md z-30 hover:scale-105 transition-transform duration-700 ease-out animate-[float_6s_ease-in-out_infinite]">
+                    <img src="hero_texture.png" alt="Afra Beauty Product Texture" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Glassmorphism Badge -->
+                <div class="absolute top-[10%] md:top-[15%] left-[0%] lg:left-[10%] px-4 md:px-5 py-2 md:py-3 bg-white/70 backdrop-blur-xl border border-white rounded-full shadow-xl z-40 animate-[float_8s_ease-in-out_infinite_reverse] flex items-center gap-2 md:gap-3">
+                     <span class="material-symbols-outlined text-primary-container text-xl md:text-2xl" data-icon="stars">stars</span>
                      <div>
-                         <p class="text-[8px] md:text-[9px] font-label tracking-widest uppercase text-on-surface-variant mb-0 font-bold">Mais Vendido</p>
-                         <p class="text-xs md:text-sm font-headline italic font-bold text-on-surface">Oferta Especial</p>
+                         <p class="text-[8px] md:text-[9px] font-label tracking-widest uppercase text-on-surface-variant mb-0 font-bold">Lançamento</p>
+                         <p class="text-xs md:text-sm font-headline italic font-bold text-on-surface">Coleção Ouro</p>
                      </div>
                 </div>
+                
+                <!-- Geometric Decorative Rings -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border border-primary-container/20 rounded-full scale-90 z-0"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] border border-primary-container/10 rounded-full scale-[0.8] z-0 rotate-45 hidden md:block"></div>
             </div>
         </div>
     </section>
 
-    <!-- Product Showcase: Loja Popular -->
-    <section id="view-produtos" class="py-24 relative z-10 transition-all bg-surface pb-32">
-        <div class="container mx-auto px-6 md:px-12 relative z-10">
-            <div class="text-center mb-16">
-                <span class="font-label text-xs uppercase tracking-[0.3em] text-primary mb-4 block font-semibold">Preço Único</span>
-                <h2 class="font-headline text-4xl md:text-5xl mb-4 text-on-surface">Tudo por <span class="italic font-light">R$ 15,00</span></h2>
-                <p class="text-on-surface-variant font-light text-lg max-w-lg mx-auto leading-relaxed">
-                    Escolha seus favoritos. Os melhores produtos com o melhor preço para você arrasar todos os dias.
-                </p>
+    <!-- Product Showcase: Bento Grid Layout -->
+    <section id="view-produtos" class="py-32 relative z-10 transition-all">
+        <!-- Add a soft texture blur specifically for this section -->
+        <div class="absolute inset-0 bg-surface/70 backdrop-blur-md z-0 pointer-events-none"></div>
+        <div class="container mx-auto px-12 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <!-- Large Featured Card -->
+                <div class="md:col-span-8 bg-white/70 backdrop-blur-3xl rounded-[2rem] p-12 relative overflow-hidden flex flex-col justify-end min-h-[600px] group border-4 border-white/60 shadow-xl hover:shadow-[0_20px_60px_rgba(212,175,55,0.2)] hover:border-white transition-all duration-700 cursor-pointer">
+                    <div class="absolute top-0 right-0 w-full h-full">
+                        <img alt="Kit Pele Perfeita" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop"/>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent"></div>
+                    <div class="relative z-10 w-full md:w-2/3">
+                        <span class="font-label text-xs uppercase tracking-[0.3em] text-primary mb-4 block font-semibold">Os Mais Desejados</span>
+                        <h2 class="font-headline text-5xl mb-6 text-on-surface">Kit Pele Perfeita</h2>
+                        <p class="text-on-surface-variant font-light mb-6">A base queridinha do momento, corretivo de alta cobertura e pó fixador com acabamento aveludado.</p>
+                        <button class="font-label text-xs uppercase tracking-widest border-b border-primary pb-1 text-primary hover:text-on-primary-container transition-colors inline-block font-semibold">Comprar com Desconto</button>
+                    </div>
+                </div>
+                
+                <!-- Side Stack -->
+                <div class="md:col-span-4 flex flex-col gap-8">
+                    <div class="bg-white/70 backdrop-blur-xl border-4 border-white/60 shadow-xl rounded-[2rem] p-8 flex-1 group hover:border-white transition-all duration-700 cursor-pointer">
+                        <div class="h-48 mb-6 overflow-hidden rounded-[1.5rem]">
+                            <img alt="Glow Diário" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=1000&auto=format&fit=crop"/>
+                        </div>
+                        <h3 class="font-headline text-2xl mb-2 text-on-surface">Glow Diário</h3>
+                        <p class="text-on-surface-variant text-sm font-light">Iluminadores cremosos que garantem um brilho natural em segundos.</p>
+                    </div>
+                    
+                    <div class="bg-surface rounded-[2rem] p-8 flex-1 flex flex-col justify-between text-white shadow-xl relative overflow-hidden group cursor-pointer hover:shadow-[0_30px_60px_rgba(212,175,55,0.4)] transition-all duration-700 border-4 border-white/40">
+                        <!-- Liquid Gold Overlay -->
+                        <img src="hero_texture.png" class="absolute inset-0 w-full h-full object-cover opacity-100 mix-blend-multiply group-hover:scale-110 transition-transform duration-[2s] ease-out" alt="Liquid Gold"/>
+                        <!-- Dark gradient for text readability -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="absolute -right-10 -top-10 text-white/10 w-40 h-40 transition-transform group-hover:scale-125 duration-700">
+                            <span class="material-symbols-outlined text-[150px]" data-icon="redeem">redeem</span>
+                        </div>
+                        <span class="material-symbols-outlined text-4xl mb-4 relative z-10" data-icon="redeem">redeem</span>
+                        <div class="relative z-10">
+                            <h3 class="font-headline text-3xl mb-4 text-white drop-shadow-md">Luxo Acessível</h3>
+                            <p class="text-white/90 text-sm font-light leading-relaxed mb-6">Produtos importados e nacionais para boca, olhos e pele com preços que você vai amar.</p>
+                            <button class="w-full py-3 bg-white/20 backdrop-blur-md border border-white/50 text-white rounded-full text-xs font-label tracking-widest uppercase hover:bg-white hover:text-[#C69363] transition-all duration-300 font-bold shadow-lg">Descobrir Ofertas</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Grid de 8 Produtos -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-                <!-- Produto 1 -->
-                <div class="bg-white rounded-2xl p-4 md:p-5 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 border border-primary-container/10 group">
-                    <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 bg-surface-container-low">
-                        <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?q=80&w=400&auto=format&fit=crop" alt="Batom Líquido Matte" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-headline text-lg md:text-xl text-on-surface mb-1 min-h-[2.5rem]">Batom Matte</h3>
-                    <p class="text-primary font-bold text-lg mb-4">R$ 15,00</p>
-                    <a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Quero%20comprar%20o%20Batom%20Matte" target="_blank" rel="noopener" class="w-full py-2.5 bg-[#25D366] text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#20b858] transition-colors flex justify-center items-center gap-2 mt-auto">
-                        <span class="material-symbols-outlined text-[16px]" data-icon="shopping_cart">shopping_cart</span> Comprar
-                    </a>
-                </div>
-                <!-- Produto 2 -->
-                <div class="bg-white rounded-2xl p-4 md:p-5 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 border border-primary-container/10 group">
-                    <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 bg-surface-container-low relative">
-                        <div class="absolute top-2 left-2 bg-primary-container text-white text-[9px] font-bold px-2 py-0.5 rounded-full z-10 uppercase tracking-wider">Oferta</div>
-                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=400&auto=format&fit=crop" alt="Base Líquida" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-headline text-lg md:text-xl text-on-surface mb-1 min-h-[2.5rem]">Base Alta Cobertura</h3>
-                    <p class="text-primary font-bold text-lg mb-4">R$ 15,00</p>
-                    <a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Quero%20comprar%20a%20Base%20Alta%20Cobertura" target="_blank" rel="noopener" class="w-full py-2.5 bg-[#25D366] text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#20b858] transition-colors flex justify-center items-center gap-2 mt-auto">
-                        <span class="material-symbols-outlined text-[16px]" data-icon="shopping_cart">shopping_cart</span> Comprar
-                    </a>
-                </div>
-                <!-- Produto 3 -->
-                <div class="bg-white rounded-2xl p-4 md:p-5 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 border border-primary-container/10 group">
-                    <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 bg-surface-container-low">
-                        <img src="https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=400&auto=format&fit=crop" alt="Pó Compacto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-headline text-lg md:text-xl text-on-surface mb-1 min-h-[2.5rem]">Pó Compacto</h3>
-                    <p class="text-primary font-bold text-lg mb-4">R$ 15,00</p>
-                    <a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Quero%20comprar%20o%20P%C3%B3%20Compacto" target="_blank" rel="noopener" class="w-full py-2.5 bg-[#25D366] text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#20b858] transition-colors flex justify-center items-center gap-2 mt-auto">
-                        <span class="material-symbols-outlined text-[16px]" data-icon="shopping_cart">shopping_cart</span> Comprar
-                    </a>
-                </div>
-                <!-- Produto 4 -->
-                <div class="bg-white rounded-2xl p-4 md:p-5 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 border border-primary-container/10 group">
-                    <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 bg-surface-container-low">
-                        <img src="https://images.unsplash.com/photo-1512496115851-a1c8ffe67cbd?q=80&w=400&auto=format&fit=crop" alt="Paleta de Sombras" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-headline text-lg md:text-xl text-on-surface mb-1 min-h-[2.5rem]">Paleta de Sombras</h3>
-                    <p class="text-primary font-bold text-lg mb-4">R$ 15,00</p>
-                    <a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Quero%20comprar%20a%20Paleta%20de%20Sombras" target="_blank" rel="noopener" class="w-full py-2.5 bg-[#25D366] text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#20b858] transition-colors flex justify-center items-center gap-2 mt-auto">
-                        <span class="material-symbols-outlined text-[16px]" data-icon="shopping_cart">shopping_cart</span> Comprar
-                    </a>
-                </div>
-                <!-- Produto 5 -->
-                <div class="bg-white rounded-2xl p-4 md:p-5 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 border border-primary-container/10 group">
-                    <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 bg-surface-container-low">
-                        <img src="https://images.unsplash.com/photo-1631214500515-873b22295ce5?q=80&w=400&auto=format&fit=crop" alt="Gloss Labial" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-headline text-lg md:text-xl text-on-surface mb-1 min-h-[2.5rem]">Gloss Mágico</h3>
-                    <p class="text-primary font-bold text-lg mb-4">R$ 15,00</p>
-                    <a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Quero%20comprar%20o%20Gloss%20Labial" target="_blank" rel="noopener" class="w-full py-2.5 bg-[#25D366] text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#20b858] transition-colors flex justify-center items-center gap-2 mt-auto">
-                        <span class="material-symbols-outlined text-[16px]" data-icon="shopping_cart">shopping_cart</span> Comprar
-                    </a>
-                </div>
-                <!-- Produto 6 -->
-                <div class="bg-white rounded-2xl p-4 md:p-5 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 border border-primary-container/10 group">
-                    <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 bg-surface-container-low relative">
-                        <div class="absolute top-2 left-2 bg-on-surface text-white text-[9px] font-bold px-2 py-0.5 rounded-full z-10 uppercase tracking-wider">Novo</div>
-                        <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=400&auto=format&fit=crop" alt="Iluminador" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-headline text-lg md:text-xl text-on-surface mb-1 min-h-[2.5rem]">Iluminador Pó</h3>
-                    <p class="text-primary font-bold text-lg mb-4">R$ 15,00</p>
-                    <a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Quero%20comprar%20o%20Iluminador%20P%C3%B3" target="_blank" rel="noopener" class="w-full py-2.5 bg-[#25D366] text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#20b858] transition-colors flex justify-center items-center gap-2 mt-auto">
-                        <span class="material-symbols-outlined text-[16px]" data-icon="shopping_cart">shopping_cart</span> Comprar
-                    </a>
-                </div>
-                <!-- Produto 7 -->
-                <div class="bg-white rounded-2xl p-4 md:p-5 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 border border-primary-container/10 group">
-                    <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 bg-surface-container-low">
-                        <img src="https://images.unsplash.com/photo-1580870059800-47b713ffb78c?q=80&w=400&auto=format&fit=crop" alt="Máscara de Cílios" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-headline text-lg md:text-xl text-on-surface mb-1 min-h-[2.5rem]">Máscara de Cílios</h3>
-                    <p class="text-primary font-bold text-lg mb-4">R$ 15,00</p>
-                    <a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Quero%20comprar%20a%20M%C3%A1scara%20de%20C%C3%ADlios" target="_blank" rel="noopener" class="w-full py-2.5 bg-[#25D366] text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#20b858] transition-colors flex justify-center items-center gap-2 mt-auto">
-                        <span class="material-symbols-outlined text-[16px]" data-icon="shopping_cart">shopping_cart</span> Comprar
-                    </a>
-                </div>
-                <!-- Produto 8 -->
-                <div class="bg-white rounded-2xl p-4 md:p-5 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 border border-primary-container/10 group">
-                    <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 bg-surface-container-low">
-                        <img src="https://images.unsplash.com/photo-1590156546946-ce55a12a6a5d?q=80&w=400&auto=format&fit=crop" alt="Kit Pincéis" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-headline text-lg md:text-xl text-on-surface mb-1 min-h-[2.5rem]">Kit de Pincéis</h3>
-                    <p class="text-primary font-bold text-lg mb-4">R$ 15,00</p>
-                    <a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Quero%20comprar%20o%20Kit%20de%20Pinc%C3%A9is" target="_blank" rel="noopener" class="w-full py-2.5 bg-[#25D366] text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#20b858] transition-colors flex justify-center items-center gap-2 mt-auto">
-                        <span class="material-symbols-outlined text-[16px]" data-icon="shopping_cart">shopping_cart</span> Comprar
-                    </a>
-                </div>
+    <!-- Inspiration Gallery: 3D Isometric View -->
+    <section class="py-32 bg-surface-container-low overflow-hidden relative border-t border-primary-container/10">
+        <div class="absolute w-96 h-96 bg-primary-container/10 rounded-full blur-[100px] top-0 right-0"></div>
+        <div class="container mx-auto px-12 flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-1/2 mb-16 md:mb-0 md:pr-12 lg:pr-24">
+                <span class="font-label text-xs uppercase tracking-[0.3em] text-primary mb-4 block font-semibold flex items-center gap-2">
+                    <span class="w-8 h-[1px] bg-primary"></span> Moodboard
+                </span>
+                <h2 class="font-headline text-5xl md:text-6xl mb-6 text-on-surface drop-shadow-sm">A Nossa <br/><span class="italic font-light">Essência</span></h2>
+                <p class="text-on-surface-variant font-light mb-8 text-lg max-w-md leading-relaxed">
+                    Acompanhe as últimas tendências e inspirações de maquiagem que guiam o estilo da Afra Beauty. Uma curadoria visual feita para despertar o luxo que existe em você.
+                </p>
+                <a href="https://www.instagram.com/afrabeautycosmeticos" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-3 bg-on-surface text-surface rounded-full font-label tracking-widest text-xs uppercase hover:bg-primary-container hover:text-white transition-all duration-300 shadow-xl shadow-on-surface/10 hover:-translate-y-1">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    Siga no Instagram
+                </a>
             </div>
             
-            <div class="mt-16 flex justify-center">
-                <button class="px-10 py-4 border-2 border-primary-container text-primary-container rounded-full font-label tracking-widest text-xs uppercase hover:bg-primary-container hover:text-white transition-colors text-center font-bold">
-                    Ver Mais Produtos
-                </button>
+            <div class="md:w-1/2 relative flex justify-center items-center w-full min-h-[500px]" style="perspective: 1200px;">
+                <!-- 3D Transform Container -->
+                <div class="relative w-full max-w-md md:max-w-lg aspect-[4/5] rounded-xl overflow-hidden transition-all duration-1000 ease-out border-[12px] border-white group hover:!transform-none z-10"
+                     style="transform: rotateX(12deg) rotateY(-18deg) rotateZ(3deg); box-shadow: -35px 35px 60px rgba(212, 175, 55, 0.15), -10px 10px 20px rgba(0,0,0,0.05); transform-style: preserve-3d;">
+                    
+                    <img src="IMAGENS.png" alt="Afra Beauty Inspirations" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out origin-center" />
+                    
+                    <!-- Glass reflection and shadow inner -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-1000"></div>
+                    <div class="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.1)] pointer-events-none"></div>
+                </div>
+                
+                <!-- Background decorative elements for the 3D feeling -->
+                <div class="absolute w-full max-w-md md:max-w-lg aspect-[4/5] rounded-xl border border-primary-container/30 transition-all duration-1000 delay-100 group-hover:!transform-none opacity-50"
+                     style="transform: rotateX(12deg) rotateY(-18deg) rotateZ(3deg) translateZ(-50px) translateX(20px) translateY(-20px);"></div>
+                     
+                <!-- Floating icon -->
+                <div class="absolute bottom-10 -left-6 bg-white p-4 rounded-full shadow-2xl z-20 transition-all duration-700 delay-200 hover:-translate-y-2 group-hover:opacity-0">
+                    <span class="material-symbols-outlined text-primary-container text-3xl block" data-icon="auto_awesome">auto_awesome</span>
+                </div>
             </div>
         </div>
     </section>
-
-</main>
 
 </main>
 
@@ -345,6 +349,14 @@
     </div>
 </footer>
 
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20%F0%9F%92%96" target="_blank" rel="noopener noreferrer" 
+   class="fixed bottom-8 right-8 z-[999] w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_8px_25px_rgba(37,211,102,0.5)] hover:scale-110 hover:shadow-[0_12px_35px_rgba(37,211,102,0.6)] transition-all duration-300 group" aria-label="Fale conosco pelo WhatsApp">
+    <svg class="w-8 h-8 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <!-- Pulse ring -->
+    <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30"></span>
+</a>
+
 <script>
     function mostrarView(view) {
         const home = document.getElementById('view-home');
@@ -358,17 +370,8 @@
         }
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    // Inicia mostrando só o hero
     mostrarView('home');
 </script>
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20%F0%9F%92%96" target="_blank" rel="noopener noreferrer" 
-   class="fixed bottom-8 right-8 z-[999] w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_8px_25px_rgba(37,211,102,0.5)] hover:scale-110 hover:shadow-[0_12px_35px_rgba(37,211,102,0.6)] transition-all duration-300 group" aria-label="Fale conosco pelo WhatsApp">
-    <svg class="w-8 h-8 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    <!-- Pulse ring -->
-    <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30"></span>
-</a>
 
 </body>
 </html>
