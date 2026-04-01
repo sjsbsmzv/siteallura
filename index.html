@@ -65,14 +65,14 @@
 <!-- Top Navigation Bar -->
 <nav class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-2xl border-b border-primary-container/20">
     <div class="flex justify-between items-center px-6 md:px-12 py-3 w-full max-w-screen-2xl mx-auto">
-        <a href="#" class="flex items-center">
+        <a href="#" onclick="mostrarView('home'); return false;" class="flex items-center">
             <img src="LOGO.png" alt="Afra Beauty Logo" class="h-16 w-auto object-contain hover:opacity-80 transition-opacity duration-300 hover:scale-105" />
         </a>
         <div class="hidden md:flex space-x-12 font-headline font-light tracking-wide">
-            <a class="text-primary-container border-b border-primary-container/30 pb-1 hover:opacity-100 hover:text-primary transition-all duration-500" href="#">Tudo até R$ 20</a>
-            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#">Skin Care</a>
-            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#">Mais Vendidos</a>
-            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#">Novidades</a>
+            <a class="text-primary-container border-b border-primary-container/30 pb-1 hover:opacity-100 hover:text-primary transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Tudo até R$ 20</a>
+            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Skin Care</a>
+            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Mais Vendidos</a>
+            <a class="text-on-surface opacity-80 hover:opacity-100 hover:text-primary-container transition-all duration-500" href="#" onclick="mostrarView('produtos'); return false;">Novidades</a>
         </div>
         <div class="flex items-center space-x-6 text-primary-container">
             <button class="hover:scale-110 transition-transform">
@@ -91,7 +91,7 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="relative min-h-[100svh] flex items-center pt-20 md:pt-24 overflow-hidden">
+    <section id="view-home" class="relative min-h-[100svh] flex items-center pt-20 md:pt-24 overflow-hidden">
         
 
         
@@ -109,7 +109,7 @@
                     As últimas tendências em maquiagem e autocuidado com a praticidade que você ama. Descubra produtos de alta qualidade com preços incríveis que cabem no seu bolso.
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                    <button class="px-8 md:px-10 py-3.5 md:py-4 bg-primary-container text-white rounded-full font-label tracking-widest text-[10px] md:text-xs uppercase transition-all duration-500 hover:bg-primary w-full sm:w-auto font-bold">
+                    <button onclick="mostrarView('produtos')" class="px-8 md:px-10 py-3.5 md:py-4 bg-primary-container text-white rounded-full font-label tracking-widest text-[10px] md:text-xs uppercase transition-all duration-500 hover:bg-primary w-full sm:w-auto font-bold">
                         Ver Produtos
                     </button>
                     <button class="px-8 md:px-10 py-3.5 md:py-4 border-2 border-primary-container text-primary-container rounded-full font-label tracking-widest text-[10px] md:text-xs uppercase hover:bg-primary-container/10 transition-colors w-full sm:w-auto text-center font-bold">
@@ -140,7 +140,7 @@
     </section>
 
     <!-- Product Showcase: Loja Popular -->
-    <section class="py-24 relative z-10 transition-all bg-surface pb-32">
+    <section id="view-produtos" class="py-24 relative z-10 transition-all bg-surface pb-32">
         <div class="container mx-auto px-6 md:px-12 relative z-10">
             <div class="text-center mb-16">
                 <span class="font-label text-xs uppercase tracking-[0.3em] text-primary mb-4 block font-semibold">Preço Único</span>
@@ -344,6 +344,23 @@
         </div>
     </div>
 </footer>
+
+<script>
+    function mostrarView(view) {
+        const home = document.getElementById('view-home');
+        const produtos = document.getElementById('view-produtos');
+        if (view === 'produtos') {
+            home.style.display = 'none';
+            produtos.style.display = 'block';
+        } else {
+            home.style.display = '';
+            produtos.style.display = 'none';
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Inicia mostrando só o hero
+    mostrarView('home');
+</script>
 
 <!-- Floating WhatsApp Button -->
 <a href="https://wa.me/5551981522245?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20%F0%9F%92%96" target="_blank" rel="noopener noreferrer" 
